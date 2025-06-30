@@ -1,12 +1,30 @@
-# React + Vite
+# 🧠 React To-Do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, intuitive, and responsive **To-Do List application** built using **React** and **Tailwind CSS**. Designed with performance and simplicity in mind, this app allows users to efficiently manage their daily tasks through a minimal and elegant user interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## ⚙️ Core Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ➕ Add new tasks instantly
+- ✅ Mark tasks as completed
+- 🔄 Toggle task status (pending/completed)
+- 🗑️ Delete tasks individually
+- 📱 Fully responsive layout using Tailwind CSS
+- ⚡ Real-time updates using React state hooks
+- 🎯 Unique ID generation for tasks using `nanoid`
+
+---
+
+## 🧰 Tech Stack
+
+| Tech         | Purpose                    |
+|--------------|----------------------------|
+| React        | UI rendering and logic     |
+| Tailwind CSS | Utility-first styling      |
+| nanoid       | Unique task ID generation  |
+| Vite         | Fast development server    |
+
+---
+

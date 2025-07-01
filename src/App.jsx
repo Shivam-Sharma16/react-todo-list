@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Create from './components/Create';
 import Read from './components/Read';
+import { todoContext } from './Wrapper';
 const App = () => {
-  const [todos, settodos] = useState([
-    {
-      id: 1,
-      title: 'kam karle',
-      isCompleted: false,
-    },
-  ]);
- 
+ const [todos,settodos]= useContext(todoContext)
 
  
 

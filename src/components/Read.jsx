@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast, ToastContainer } from 'react-toastify';
+import { todoContext } from '../Wrapper';
 
 
-const Read = (props) => {
-  const todos = props.todos;
-const settodos=props.settodos;
+const Read = () => {
+  
+ const [todos,settodos]=useContext(todoContext)
+  
   const deleteHandler=(id)=>{
     let filterTodo=todos.filter((todo)=> todo.id != id);
     settodos(filterTodo);
-    toast.error("work deleted")
+    toast.error("Task deleted")
     
   }
   const clearHandler=()=>{

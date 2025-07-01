@@ -3,12 +3,13 @@ import { nanoid } from 'nanoid';
 import { useForm } from "react-hook-form"
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import { Flip } from 'react-toastify/unstyled';
+import { useContext } from 'react';
+import { todoContext } from '../Wrapper';
 
 
 
-const Create = (props) => {
-   const  todos=props.todos;
-   const settodos=props.settodos;
+const Create = () => {
+   const [todos,settodos]= useContext(todoContext)
    const {
     register,
     handleSubmit,
@@ -29,17 +30,7 @@ const Create = (props) => {
     copy.push(data);
     settodos(copy);
     reset()
-    toast.success('🦄 Wow so easy!', {
-position: "top-center",
-autoClose: 2000,
-hideProgressBar: false,
-closeOnClick: false,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "colored",
-transition: Flip,
-});
+    toast.success('Task Created Successfully 👍👍');
    
   };
 

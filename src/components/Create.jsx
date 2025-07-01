@@ -1,42 +1,64 @@
 import React from 'react'
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useForm } from "react-hook-form"
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { Flip } from 'react-toastify/unstyled';
+
 
 
 const Create = (props) => {
    const  todos=props.todos;
    const settodos=props.settodos;
-     const [title, settitle] = useState('');
- const submitHandler = (e) => {
-    e.preventDefault();
+   const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
 
-    // Don't allow empty task
-    if (title.trim() === '') return;
 
-    const newTodo = {
-      id: nanoid(),
-      title: title,
-      isCompleted: false,
-    };
 
-    settodos([...todos, newTodo]); // ✅ Corrected: adding the object, not an array
-    settitle('');
+
+ const submitHandler = (data) => {
+   
+
+   
+    data.id=nanoid();
+    data.isCompleted=false;
+    let copy =[...todos];
+    copy.push(data);
+    settodos(copy);
+    reset()
+    toast.success('🦄 Wow so easy!', {
+position: "top-center",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+transition: Flip,
+});
+   
   };
 
   return (
     <div className='w-[50vw] '>
       <h1 className='text-6xl font-thin'>CREATE YOUR <span className='text-red-400'>DAILY</span> TASK</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit(submitHandler)}>
         <input 
         className='p-2 w-[45vw] text-2xl mt-[2rem] cursor-context-menu thinner rounded border-2 outline-none '
-          onChange={(e) => settitle(e.target.value)}
-          value={title}
+          {...register('title',{required:"title can't be empty"})}
+          
           type="text"
           placeholder="title..."
         />
         <br />
+        <small className='text-xl font-thin text-red-600'>{errors?.title?.message}</small>
         <br />
-       <textarea placeholder='enter description...'         className='p-2 w-[45vw] text-2xl  cursor-context-menu thinner rounded border-2 outline-none '
+        <br />
+       <textarea placeholder='enter description...' className='p-2 w-[45vw] text-2xl  cursor-context-menu thinner rounded border-2 outline-none '
 ></textarea>
         <br />        
         <br />

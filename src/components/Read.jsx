@@ -1,4 +1,5 @@
 import React from "react";
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const Read = (props) => {
@@ -7,16 +8,18 @@ const settodos=props.settodos;
   const deleteHandler=(id)=>{
     let filterTodo=todos.filter((todo)=> todo.id != id);
     settodos(filterTodo);
-    
+    toast.error("work deleted")
     
   }
   const clearHandler=()=>{
     settodos([])
+    toast.error("all task cleared")
   }
 
   const renderTodos = todos.map((todo) =>
    <li className="w-full flex justify-between items-center mt-[1rem] text-2xl border-2 rounded-2xl p-[1rem] font-thin" key={todo.id}>
-    {todo.title}   <button className="text-red-500 cursor-pointer text-xl " onClick={()=>deleteHandler(todo.id)}>Delete</button>
+    {todo.title}   <button  className="text-red-500 cursor-pointer text-xl " onClick={()=>deleteHandler(todo.id)}>Delete</button>
+    
   </li>);
 
   return (
